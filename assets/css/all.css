@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --bg-color: linear-gradient(200deg, #101010, #151515);
+    --text-color: white;
+    --font-family: 'Tilt Warp', cursive;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    background-image: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    text-shadow: 1px 1px 1px black;
+    justify-content: center;
+    align-items: center;
+}

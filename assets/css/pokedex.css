@@ -1,0 +1,133 @@
+:root {
+    --grass: #49D0B0;
+    --fire: #FC6C6D;
+    --water: #58A9F4;
+    --normal: #9c9c9c;
+    --poison: #7C528C;
+    --yellow: #FFCE4B;
+    --pink: #B1736D;
+    --ground: #74504d;
+    --dragon: #ffc629;
+    --dark: #202020;
+}
+
+body {
+    align-items: flex-start;
+}
+
+.decal {
+    position: absolute;
+    right: -80px;
+    top: -60px;
+}
+
+.settings {
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 20px;
+    margin-top: 25px;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 250%;
+    margin: 40px 25px 20px 25px;
+}
+
+.cards {
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+.card {
+    justify-content: center;
+
+    flex: 1 150px;
+    font-size: 120%;
+    height: 20vh;
+
+    margin: 2% 2%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+
+    background-image: url("./../images/pokedecal-icon.png");
+    background-size: 140%;
+    background-repeat: no-repeat;
+}
+
+.card>span {
+    text-transform: capitalize;
+    font-size: 125%;
+
+    position: relative;
+    top: 5px;
+}
+
+.card>div {
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.card>div>img {
+    position: relative;
+    bottom: -12px;
+    right: -10px;
+
+    width: 100%;
+}
+
+.card>div>div {
+    margin-top: 10px;
+}
+
+.type {
+    align-items: center;
+    text-transform: capitalize;
+
+    margin: 3px 0;
+    padding: 3px 8px;
+    border-radius: 10px;
+
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.green {
+    background-color: var(--grass);
+}
+
+.red {
+    background-color: var(--fire);
+}
+
+.blue {
+    background-color: var(--water);
+}
+
+.white {
+    background-color: var(--normal);
+}
+
+.purple {
+    background-color: var(--poison);
+}
+
+.yellow {
+    background-color: var(--yellow);
+}
+
+.pink {
+    background-color: var(--pink);
+}
+
+.brown {
+    background-color: var(--ground);
+}
+
+.gold {
+    background-color: var(--dragon);
+}
+
+.black {
+    background-color: var(--dark);
+}
