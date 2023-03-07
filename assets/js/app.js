@@ -6,7 +6,7 @@ if (cards) {
 }
 
 async function getCards() {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
+    await fetch("https://pokeapi.co/api/v2/pokemon?limit=50")
         .then(function (response) { return response.json() })
         .then(function (response) {
             for (let index = 0; index < response.results.length; index++) {
@@ -19,11 +19,18 @@ async function getCards() {
                 let img = document.createElement("img");
 
                 card.setAttribute("class", "card flex-column");
+                card.setAttribute("onclick", "getPokeInfos(event)");
+                card.setAttribute("id", index);
                 div.setAttribute("class", "flex-row");
+                div.setAttribute("id", index);
                 div2.setAttribute("class", "flex-column")
+                div2.setAttribute("id", index);
                 name.innerText = response.results[index].name;
+                name.setAttribute("id", index);
                 type.setAttribute("class", "type flex-column");
+                type.setAttribute("id", index);
                 type2.setAttribute("class", "type flex-column");
+                type2.setAttribute("id", index);
                 card.appendChild(name);
 
                 getPokemons(response, type, type2, div, div2, img, card, index, cards)
@@ -38,7 +45,7 @@ async function getPokemons(response, type, type2, div, div2, img, card, index, c
         .then(function (response) {
             getTypes(response, type, type2, div2,)
             getColors(response, card)
-            getCard(response, card, img, div, div2, cardNumber)
+            getCard(response, card, img, div, div2, cardNumber, index)
             return response
         })
 }
@@ -83,11 +90,12 @@ function getColors(response, card) {
     }
 }
 
-function getCard(response, card, img, div, div2, cardNumber) {
+function getCard(response, card, img, div, div2, cardNumber, index) {
     img.setAttribute("src", response.sprites.front_shiny);
+    img.setAttribute("id", index);
     div.appendChild(div2);
     div.appendChild(img);
-    card.appendChild(div)
+    card.appendChild(div);
     cardNumber.appendChild(card);
 }
 
@@ -116,6 +124,7 @@ if (input) {
                             let img = document.createElement("img");
 
                             card.setAttribute("class", "card flex-column");
+                            card.setAttribute("onclick", "getPokeInfos(event)");
                             div.setAttribute("class", "flex-row");
                             div2.setAttribute("class", "flex-column")
                             name.innerText = response.results[index].name;
@@ -136,4 +145,17 @@ if (input) {
                 })
         }
     })
+}
+
+let pokeInfo = document.getElementById("pokeInfo");
+async function getPokeInfos(e) {
+    await fetch("https://pokeapi.co/api/v2/pokemon/" + (Number(e.target.id)+1))
+        .then(function (response) { return response.json() })
+        .then(function (response) {
+            let img = document.createElement("img");
+            img.setAttribute("src", response.sprites.front_shiny)
+            pokeInfo.appendChild(img)
+        })
+
+    
 }

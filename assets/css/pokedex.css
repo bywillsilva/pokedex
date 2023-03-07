@@ -25,7 +25,7 @@ body {
 .settings {
     width: 100%;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 3%;
     margin-top: 40px;
     box-sizing: border-box;
 }
@@ -36,7 +36,7 @@ body {
 
 .title {
     font-size: 250%;
-    margin: 20px 25px 30px 20px;
+    margin: 20px 25px 30px 3%;
 }
 
 .cards {
@@ -45,6 +45,7 @@ body {
 }
 
 .card {
+    border: none;
     justify-content: center;
 
     flex: 1 150px;

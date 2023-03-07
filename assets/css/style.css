@@ -69,13 +69,8 @@ main>section:nth-child(1) {
     }
 }
 
-
-.settings {
-    padding: 20px 0 15px 10px;
-}
-
 .search {
-    padding-top: 15px;
+    padding-top: 80px;
 }
 
 .search>span {
