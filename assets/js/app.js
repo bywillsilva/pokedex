@@ -1,7 +1,7 @@
 const cards = document.getElementById("cards");
 
 async function getCards() {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
+    await fetch("https://pokeapi.co/api/v2/pokemon?limit=15")
         .then(function (response) { return response.json() })
         .then(function (response) {
             for (let index = 0; index < response.results.length; index++) {
@@ -88,4 +88,21 @@ function getPokemons(response, type, type2, div, div2, img, card, index) {
             getCard(response, card, img, div, div2)
             return response
         })
+}
+
+const input = document.getElementById("input");
+const search = document.getElementById("search");
+if (input) {
+    search.addEventListener("click", async () => {
+        await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
+            .then(function (response) { return response.json() })
+            .then(function (response) {
+                for (let index = 0; index < response.results.length; index++) {
+                    if (String(response.results[index].name).includes(input.value)) {
+                        console.log(response.results[index].name)
+                    }
+                }
+                return response
+            })
+    })
 }
