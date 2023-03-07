@@ -1,5 +1,9 @@
 const cards = document.getElementById("cards");
 
+if (cards) {
+    getCards()
+}
+
 async function getCards() {
     await fetch("https://pokeapi.co/api/v2/pokemon?limit=15")
         .then(function (response) { return response.json() })
@@ -27,8 +31,15 @@ async function getCards() {
         })
 }
 
-if (cards) {
-    getCards()
+async function getPokemons(response, type, type2, div, div2, img, card, index) {
+    await fetch(response.results[index].url)
+        .then(function (response) { return response.json() })
+        .then(function (response) {
+            getTypes(response, type, type2, div2)
+            getColors(response, card)
+            getCard(response, card, img, div, div2)
+            return response
+        })
 }
 
 function getTypes(response, type, type2, div2) {
@@ -79,30 +90,30 @@ function getCard(response, card, img, div, div2) {
     cards.appendChild(card);
 }
 
-function getPokemons(response, type, type2, div, div2, img, card, index) {
-    fetch(response.results[index].url)
-        .then(function (response) { return response.json() })
-        .then(function (response) {
-            getTypes(response, type, type2, div2)
-            getColors(response, card)
-            getCard(response, card, img, div, div2)
-            return response
-        })
-}
-
 const input = document.getElementById("input");
 const search = document.getElementById("search");
+const error = document.getElementById("error");
+
 if (input) {
     search.addEventListener("click", async () => {
         await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
             .then(function (response) { return response.json() })
             .then(function (response) {
+                let names = [];
                 for (let index = 0; index < response.results.length; index++) {
                     if (String(response.results[index].name).includes(input.value)) {
+                        names.push(response.results[index].name)
                         console.log(response.results[index].name)
                     }
                 }
-                return response
+                if (names.length < 1) {
+                    console.log(names.length)
+                    error.className = "error-active flex-column"
+                    setTimeout(() => {
+                        error.className = "error flex-column"
+                    }, 3000)
+                }
+                names = [];
             })
     })
 }
