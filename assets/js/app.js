@@ -104,7 +104,7 @@ if (input) {
                 .then(function (response) {
                     let names = [];
                     for (let index = 0; index < response.results.length; index++) {
-                        if (String(response.results[index].name).includes(input.value)) {
+                        if (String(response.results[index].name).includes(String(input.value).toLowerCase())) {
                             names.push(response.results[index].name)
 
                             let card = document.createElement("div");
