@@ -94,7 +94,7 @@ main>section:nth-child(1) {
     align-items: center;
     justify-content: space-between;
 
-    flex: 1 130px;
+    flex: 1 125px;
     height: 3vh;
 
     font-size: 120%;
