@@ -109,29 +109,29 @@ main>section:nth-child(1) {
 
 #pokeball {
     position: relative;
-    top: -13px;
-    left: 10px;
+    top: -15px;
+    left: 0px;
     width: 78px;
 }
 
 #flash {
     position: relative;
     top: -13px;
-    left: 30px;
+    left: 20px;
     width: 100px;
 }
 
 #arrow {
     position: relative;
     top: -15px;
-    left: 0px;
+    left: -10px;
     width: 60px;
 }
 
 #location {
     position: relative;
     top: -15px;
-    left: 15px;
+    left: 5px;
     width: 75px;
 }
 
