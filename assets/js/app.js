@@ -94,7 +94,7 @@ const pokedex = document.getElementById("pokedex");
 if (pokedex) {
     pokedex.addEventListener("click", () => {
         // return window.location.href = "http://127.0.0.1:5500/pages/pokedex.html";
-        return window.location.href = "pokedex/pages/pokedex.html"
+        return window.location.href = "/pages/pokedex.html"
     })
 }
 
