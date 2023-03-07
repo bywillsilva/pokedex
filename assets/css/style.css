@@ -94,7 +94,7 @@ main>section:nth-child(1) {
     align-items: center;
     justify-content: space-between;
 
-    flex: 1 125px;
+    flex: 1 130px;
     height: 3vh;
 
     font-size: 120%;
@@ -111,28 +111,28 @@ main>section:nth-child(1) {
     position: relative;
     top: -13px;
     left: 10px;
-    width: 90px;
+    width: 75px;
 }
 
 #flash {
     position: relative;
     top: -13px;
     left: 30px;
-    width: 110px;
+    width: 100px;
 }
 
 #arrow {
     position: relative;
     top: -15px;
     left: 0px;
-    width: 65px;
+    width: 60px;
 }
 
 #location {
     position: relative;
     top: -15px;
     left: 15px;
-    width: 80px;
+    width: 70px;
 }
 
 .option:nth-child(1) {
