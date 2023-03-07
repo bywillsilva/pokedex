@@ -91,7 +91,7 @@ function getPokemons(response, type, type2, div, div2, img, card, index) {
 const pokedex = document.getElementById("pokedex");
 if (pokedex) {
     pokedex.addEventListener("click", () => {
-        return window.location.href = "/pages/pokedex.html"
+        return window.history.go("/pages/pokedex.html")
     })
 }
 
