@@ -49,6 +49,7 @@ body {
 
     flex: 1 150px;
     font-size: 80%;
+    max-width: 300px;
 
     margin: 2% 3%;
     padding: 10px;

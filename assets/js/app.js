@@ -1,21 +1,22 @@
 const cards = document.getElementById("cards");
+const cards2 = document.getElementById("cards2");
 
 if (cards) {
     getCards()
 }
 
 async function getCards() {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=15")
+    await fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
         .then(function (response) { return response.json() })
         .then(function (response) {
             for (let index = 0; index < response.results.length; index++) {
-                const card = document.createElement("div");
-                const div = document.createElement("div");
-                const div2 = document.createElement("div");
-                const name = document.createElement("span");
-                const type = document.createElement("p");
-                const type2 = document.createElement("p");
-                const img = document.createElement("img");
+                let card = document.createElement("div");
+                let div = document.createElement("div");
+                let div2 = document.createElement("div");
+                let name = document.createElement("span");
+                let type = document.createElement("p");
+                let type2 = document.createElement("p");
+                let img = document.createElement("img");
 
                 card.setAttribute("class", "card flex-column");
                 div.setAttribute("class", "flex-row");
@@ -25,19 +26,19 @@ async function getCards() {
                 type2.setAttribute("class", "type flex-column");
                 card.appendChild(name);
 
-                getPokemons(response, type, type2, div, div2, img, card, index)
+                getPokemons(response, type, type2, div, div2, img, card, index, cards)
             }
             return response
         })
 }
 
-async function getPokemons(response, type, type2, div, div2, img, card, index) {
+async function getPokemons(response, type, type2, div, div2, img, card, index, cardNumber) {
     await fetch(response.results[index].url)
         .then(function (response) { return response.json() })
         .then(function (response) {
-            getTypes(response, type, type2, div2)
+            getTypes(response, type, type2, div2,)
             getColors(response, card)
-            getCard(response, card, img, div, div2)
+            getCard(response, card, img, div, div2, cardNumber)
             return response
         })
 }
@@ -82,12 +83,12 @@ function getColors(response, card) {
     }
 }
 
-function getCard(response, card, img, div, div2) {
+function getCard(response, card, img, div, div2, cardNumber) {
     img.setAttribute("src", response.sprites.front_shiny);
     div.appendChild(div2);
     div.appendChild(img);
     card.appendChild(div)
-    cards.appendChild(card);
+    cardNumber.appendChild(card);
 }
 
 const input = document.getElementById("input");
@@ -95,25 +96,44 @@ const search = document.getElementById("search");
 const error = document.getElementById("error");
 
 if (input) {
-    search.addEventListener("click", async () => {
-        await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
-            .then(function (response) { return response.json() })
-            .then(function (response) {
-                let names = [];
-                for (let index = 0; index < response.results.length; index++) {
-                    if (String(response.results[index].name).includes(input.value)) {
-                        names.push(response.results[index].name)
-                        console.log(response.results[index].name)
+    input.addEventListener("keypress", async () => {
+        cards2.textContent = ""
+        if (input.value != "") {
+            await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
+                .then(function (response) { return response.json() })
+                .then(function (response) {
+                    let names = [];
+                    for (let index = 0; index < response.results.length; index++) {
+                        if (String(response.results[index].name).includes(input.value)) {
+                            names.push(response.results[index].name)
+
+                            let card = document.createElement("div");
+                            let div = document.createElement("div");
+                            let div2 = document.createElement("div");
+                            let name = document.createElement("span");
+                            let type = document.createElement("p");
+                            let type2 = document.createElement("p");
+                            let img = document.createElement("img");
+
+                            card.setAttribute("class", "card flex-column");
+                            div.setAttribute("class", "flex-row");
+                            div2.setAttribute("class", "flex-column")
+                            name.innerText = response.results[index].name;
+                            type.setAttribute("class", "type flex-column");
+                            type2.setAttribute("class", "type flex-column");
+                            card.appendChild(name);
+
+                            getPokemons(response, type, type2, div, div2, img, card, index, cards2)
+                        }
                     }
-                }
-                if (names.length < 1) {
-                    console.log(names.length)
-                    error.className = "error-active flex-column"
-                    setTimeout(() => {
-                        error.className = "error flex-column"
-                    }, 3000)
-                }
-                names = [];
-            })
+                    if (names.length < 1) {
+                        error.className = "error-active flex-column"
+                        setTimeout(() => {
+                            error.className = "error flex-column"
+                        }, 3000)
+                    }
+                    names = [];
+                })
+        }
     })
 }
