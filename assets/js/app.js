@@ -89,21 +89,3 @@ function getPokemons(response, type, type2, div, div2, img, card, index) {
             return response
         })
 }
-
-const pokedex = document.getElementById("pokedex");
-if (pokedex) {
-    pokedex.addEventListener("click", () => {
-        // return window.location.href = "http://127.0.0.1:5500/pages/pokedex.html";
-        return window.location.href = "/pages/pokedex.html"
-    })
-}
-
-const back = document.getElementById("back");
-if (back) {
-    back.addEventListener("click", () => {
-        // return window.location.href = "http://127.0.0.1:5500/index.html";
-        return window.location.href = "bywillsilva.github.io/pokedex";
-    })
-}
-
-console.log(window.history.length)
