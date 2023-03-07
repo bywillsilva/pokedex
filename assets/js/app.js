@@ -27,7 +27,9 @@ async function getCards() {
         })
 }
 
-getCards()
+if (cards) {
+    getCards()
+}
 
 function getTypes(response, type, type2, div2) {
     if (response.types.length > 1) {
@@ -91,13 +93,17 @@ function getPokemons(response, type, type2, div, div2, img, card, index) {
 const pokedex = document.getElementById("pokedex");
 if (pokedex) {
     pokedex.addEventListener("click", () => {
-        return window.history.go("/pages/pokedex.html")
+        // return window.location.href = "http://127.0.0.1:5500/pages/pokedex.html";
+        return window.location.href = "bywillsilva.github.io/pokedex/pages/pokedex.html"
     })
 }
 
 const back = document.getElementById("back");
 if (back) {
     back.addEventListener("click", () => {
-        return window.history.back()
+        // return window.location.href = "http://127.0.0.1:5500/index.html";
+        return window.location.href = "bywillsilva.github.io/pokedex";
     })
 }
+
+console.log(window.history.length)
